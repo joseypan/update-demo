@@ -2,7 +2,7 @@ import { autoUpdater } from 'electron-updater'
 class Update {
     constructor(mainWindow) {
         this.mainWindow = mainWindow
-        autoUpdater.setFeedURL('http://127.0.0.1:3000/file/update')
+        // autoUpdater.setFeedURL('http://127.0.0.1:3000/file/update')
         this.error()
         this.start()
         this.updateAvailable()
