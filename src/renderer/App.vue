@@ -10,7 +10,7 @@
     created(){
       let {ipcRenderer} = this.$electron;
       ipcRenderer.on('message',(e,arg)=>{
-        console.log(e,arg)
+        alert(e,arg)
       })
     }
   }
