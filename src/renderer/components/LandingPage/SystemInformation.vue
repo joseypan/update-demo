@@ -19,6 +19,10 @@
         <div class="value">{{ electron }}</div>
       </div>
       <div class="item">
+        <div class="name">当前版本:</div>
+        <div class="value">{{ appVersion }}</div>
+      </div>
+      <div class="item">
         <div class="name">Node:</div>
         <div class="value">{{ node }}</div>
       </div>
@@ -39,7 +43,8 @@
         node: process.versions.node,
         path: this.$route.path,
         platform: require('os').platform(),
-        vue: require('vue/package.json').version
+        vue: require('vue/package.json').version,
+        appVersion:require('/package.json').version
       }
     }
   }
