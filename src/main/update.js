@@ -3,7 +3,7 @@ import { Notification, dialog } from 'electron'
 class Update {
     constructor(mainWindow) {
         this.mainWindow = mainWindow
-        autoUpdater.setFeedURL('http://127.0.0.1:3000/client')
+        autoUpdater.setFeedURL('http://192.168.18.160:80')
         autoUpdater.autoDownload = false
         this.cancellationToken = ''
         this.isUpdateNow=false
@@ -17,7 +17,10 @@ class Update {
     };
     Message(type, data) {
         // 向渲染进程发送
-        this.mainWindow.webContents.send('message', type, data)
+        this.mainWindow.webContents.send('message', {
+            type,
+            data
+        })
     };
     error() {
         // 更新发生错误时触发
@@ -74,13 +77,13 @@ class Update {
     listen() {
         // 下载监听
         autoUpdater.on('download-progress', (progressObj) => {
-            this.Message('dowloading')
+            this.Message('dowloading',progressObj)
             // let listenNot = new Notification({
             //     title:progressObj,
             //     body:progressObj
             // })
             // listenNot.show()
-            console.log('下载进度', progressObj)
+            // console.log('下载进度', progressObj)
         })
     };
     downloaded() {
